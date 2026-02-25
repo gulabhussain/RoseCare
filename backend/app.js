@@ -50,9 +50,6 @@ app.use("/api/v1/message", messageRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/appointment", appointmentRouter);
 
-// Connect Database
-dbConnection();
-
 // Error Middleware (always last)
 app.use(errorMiddleware);
 
