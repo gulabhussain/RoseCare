@@ -1,10 +1,6 @@
 import app from "./app.js";
 import serverless from "serverless-http";
-import { dbConnection } from "./database/dbConnection.js";
 import cloudinary from "cloudinary";
-
-// Connect Database
-await dbConnection();
 
 // Cloudinary Config
 cloudinary.v2.config({
