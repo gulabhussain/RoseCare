@@ -1,0 +1,101 @@
+error midleware.js   
+
+class ErrorHandler extends Error {
+    constructor(message, statusCode) {
+        super(message);
+        this.statusCode = statusCode;
+    }
+}
+
+export const errorMiddleware = (err, req, res, next) => {
+    err.statusCode = err.statusCode || 400;
+    err.message = err.message || 'Internal Server Error';
+
+    if(err.code === 11000) {
+        const message = `Duplicate ${Object.keys(err.keyValue)} entered`;
+        err = new ErrorHandler(message, 400);
+    }
+    if(err.name === 'jsonwebtokenError') {
+        const message = 'JSON Web Token is invalid, Try Again!';
+        err = new ErrorHandler(message, 400);
+    }
+    if(err.name === 'TokenExpiredError') {
+        const message = 'JSON Web Token is expired, Try Again!';
+        err = new ErrorHandler(message, 400);
+    }
+    if(err.name === "castError") {
+        const message = `Resource not found. Invalid: ${err.path}`;
+        err = new ErrorHandler(message, 400);
+    }
+
+    const errorMessage = err.errors 
+        ? Object.values(err.errors)
+            .map((error) => error.message)
+            .join(" ") 
+        : err.message;
+
+    return res.status(err.statusCode).json({
+        success: false,
+        message: err.message,
+    });
+}
+
+export default ErrorHandler;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+user controller.js  ka hai  login ke liye?
+
+
+export const login = catchAsyncErrors(async (req, res, next) => {
+    const { email, password, confirmPassword, role } = req.body;   
+    if (!email || !password || !confirmPassword || !role) {
+        return next(new ErrorHandler("Please fill all the fields", 400));
+    }  
+    if (password !== confirmPassword) {
+        return next(new ErrorHandler("Passwords do not match", 400));
+    } 
+    const user = await User.findOne({ email }).select("+password");
+    if (!user) {
+        return next(new ErrorHandler("Invalid email or password", 401));
+    }
+    const isPasswordMatched = await user.comparePassword(password);
+    if (!isPasswordMatched) {
+        return next(new ErrorHandler("Invalid email or password", 401));
+    }
+    if (role !== user.role) {
+        return next(new ErrorHandler( "User With This Role Not Found!", 400));
+    }
+      res.status(200).json({
+         success: true,
+         message: "Login successful",
+      });
+});
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,116 @@
+/* ===============================
+   ADD NEW DOCTOR FORM STYLING
+================================= */
+
+.add-doctor-form {
+  max-width: 1000px;
+  width: 100%;
+  margin: 40px auto;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Logo */
+.add-doctor-form .logo {
+  width: 120px;
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+/* Title */
+.add-doctor-form .form-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #2c3e50;
+  letter-spacing: 1px;
+}
+
+/* Main Wrapper */
+.first-wrapper {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* Avatar Section */
+.first-wrapper > div:first-child {
+  flex: 1;
+  text-align: center;
+}
+
+.first-wrapper > div:first-child img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #3939d9f2;
+  margin-bottom: 15px;
+}
+
+.first-wrapper > div:first-child input {
+  margin-top: 10px;
+}
+
+/* Form Fields Section */
+.first-wrapper > div:last-child {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Inputs & Select */
+.add-doctor-form input,
+.add-doctor-form select {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.add-doctor-form input:focus,
+.add-doctor-form select:focus {
+  border-color: #3939d9f2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(57, 57, 217, 0.15);
+}
+
+/* Button */
+.add-doctor-form button {
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #3939d9f2;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.add-doctor-form button:hover {
+  background: #2f2fbf;
+  transform: translateY(-2px);
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 768px) {
+  .first-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .first-wrapper > div:first-child {
+    margin-bottom: 20px;
+  }
+}

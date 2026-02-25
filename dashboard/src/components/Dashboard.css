@@ -1,0 +1,241 @@
+
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+
+
+.dashboard .banner:first-child {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+
+
+.dashboard .firstBox {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #b5b5ff;
+  border-radius: 20px;
+  padding: 20px;
+  min-height: 220px;
+}
+
+.dashboard .firstBox img {
+  width: 180px;
+  height: auto;
+}
+
+.dashboard .firstBox .content {
+  flex: 1;
+}
+
+.dashboard .firstBox .content div {
+  display: flex;
+  align-items: center;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.dashboard .firstBox .content div p {
+  margin-right: 8px;
+}
+
+.dashboard .firstBox .content h5 {
+  color: #ff008d;
+}
+
+.dashboard .firstBox .content p {
+  font-size: 14px;
+  color: #333;
+}
+
+
+
+.dashboard .secondBox,
+.dashboard .thirdBox {
+  flex: 1;
+  border-radius: 20px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+  min-height: 150px;
+}
+
+.dashboard .secondBox {
+  background: #3939d9f2;
+  color: #fff;
+}
+
+.dashboard .thirdBox {
+  background: #fff;
+  color: #ff008d;
+}
+
+.dashboard .secondBox p,
+.dashboard .thirdBox p {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.dashboard .secondBox h3,
+.dashboard .thirdBox h3 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+
+
+.dashboard .banner:last-child {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  overflow-x: auto;
+}
+
+.dashboard .banner:last-child h5 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+
+
+.dashboard table {
+  width: 100%;
+  min-width: 750px;
+  border-collapse: collapse;
+  font-size: 18px;
+}
+
+.dashboard table thead {
+  border-bottom: 2px solid #eee;
+}
+
+.dashboard table th,
+.dashboard table td {
+  padding: 14px 8px;
+  text-align: left;
+}
+
+.dashboard table tbody tr {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+
+
+.dashboard table select {
+  width: 100%;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.dashboard table select:focus {
+  outline: none;
+}
+
+
+
+.value-pending {
+  color: #eab308;
+}
+
+.value-accepted {
+  color: #16a34a;
+}
+
+.value-rejected {
+  color: #dc2626;
+}
+
+
+
+.dashboard table td svg {
+  display: block;
+  margin: 0 auto;
+}
+
+.green {
+  color: #16a34a;
+  font-size: 20px;
+}
+
+.red {
+  color: #dc2626;
+  font-size: 20px;
+}
+
+
+
+@media (max-width: 992px) {
+  .dashboard .banner:first-child {
+    flex-direction: column;
+  }
+
+  .dashboard .firstBox {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .dashboard .firstBox img {
+    width: 150px;
+  }
+
+  .dashboard .secondBox,
+  .dashboard .thirdBox {
+    width: 100%;
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .dashboard .banner:last-child {
+    padding: 20px;
+  }
+
+  .dashboard table {
+    font-size: 15px;
+  }
+
+  .dashboard table th,
+  .dashboard table td {
+    padding: 10px 6px;
+  }
+
+  .dashboard table select {
+    font-size: 14px;
+  }
+
+  .dashboard .secondBox h3,
+  .dashboard .thirdBox h3 {
+    font-size: 24px;
+  }
+}
+
+
+
+@media (max-width: 480px) {
+  .dashboard table {
+    font-size: 13px;
+  }
+
+  .dashboard table select {
+    font-size: 12px;
+  }
+
+  .green,
+  .red {
+    font-size: 16px;
+  }
+}
