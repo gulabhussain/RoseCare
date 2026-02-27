@@ -167,6 +167,7 @@ const AppointmentForm = () => {
           />
           <input
             type="date"
+             placeholder="DOB"
             value={dob}
             required
             onChange={(e) => setDob(e.target.value)}
@@ -183,6 +184,7 @@ const AppointmentForm = () => {
 
           <input
             type="date"
+             placeholder="Appointment Date"
             value={appointmentDate}
             required
             onChange={(e) => setAppointmentDate(e.target.value)}
