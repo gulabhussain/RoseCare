@@ -1,8 +1,9 @@
 import app from "./app.js";
-import serverless from "serverless-http";
+import { config } from "dotenv";
 import cloudinary from "cloudinary";
 
-// Cloudinary Config
+config({ path: "./config/config.env" });
+
 cloudinary.v2.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -10,4 +11,8 @@ cloudinary.v2.config({
   secure: true,
 });
 
-export default serverless(app);
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});
