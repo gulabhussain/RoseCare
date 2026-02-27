@@ -13,14 +13,14 @@ import Footer from './components/Footer';
 import axios from 'axios';
 import { Context } from "./main"; 
 
-
+const API = import.meta.env.VITE_API_URL;
 
 const App = () => {
   const {isAuthenticated, setIsAuthenticated, setUser} = useContext(Context);
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/v1/user/patient/me", { withCredentials: true});
+        const response = await axios.get(`${API}/api/v1/user/patient/me`, { withCredentials: true});
         setIsAuthenticated(true);
         setUser(response.data.user);
       } catch (error) {

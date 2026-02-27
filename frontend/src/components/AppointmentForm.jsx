@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+const API = import.meta.env.VITE_API_URL;
 
 const AppointmentForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -32,12 +33,11 @@ const AppointmentForm = () => {
     "ENT",
   ];
 
-  // ✅ FETCH DOCTORS
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:5000/api/v1/appointment/public-doctors"
+          `${API}/api/v1/appointment/public-doctors`
         );
         setDoctors(data.doctors);
       } catch (error) {
@@ -47,7 +47,7 @@ const AppointmentForm = () => {
     fetchDoctors();
   }, []);
 
-  // ✅ SUBMIT APPOINTMENT
+  // SUBMIT APPOINTMENT
   const handleAppointment = async (e) => {
     e.preventDefault();
 
@@ -67,7 +67,7 @@ const AppointmentForm = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/v1/appointment/post",
+        `${API}/api/v1/appointment/post`,
         {
           firstName,
           lastName,

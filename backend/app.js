@@ -12,14 +12,14 @@ import appointmentRouter from './router/appointmentRouter.js';
 
 const app = express();
 
-config({ path: './config/config.env' });
+config();
 
 // Database Connection
 dbConnection();
 
 // CORS
 app.use(cors({
-    origin: [process.env.FRONTEND_URL, process.env.DASHBOARD_URL],
+    origin: [process.env.FRONTEND_URL, process.env.DASHBOARD_URL].filter(Boolean),
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
 }));
@@ -32,6 +32,10 @@ app.use(fileUpload({
     useTempFiles: true,
     tempFileDir: '/tmp/',
 }));
+
+app.get("/", (req, res) => {
+  res.send("RoseCare API Running 🚀");
+});
 
 // Routes
 app.use('/api/v1/message', messageRouter);

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
+const API = import.meta.env.VITE_API_URL;
 
 const MessageForm = () => {
   const [firstName, setFirstName] = useState("");
@@ -14,7 +15,7 @@ const MessageForm = () => {
     try {
       await axios
         .post(
-          "http://localhost:5000/api/v1/message/send",
+          `${API}/api/v1/message/send`,
           { firstName, lastName, email, phone, message },
           {
             withCredentials: true,
