@@ -129,8 +129,8 @@ const AddNewDoctor = () => {
               />
 
               <input type="date"
+                placeholder="DOB"
                 value={dob}
-                placeholder="D O B"
                 onChange={(e) => setDob(e.target.value)}
                 required
               />
