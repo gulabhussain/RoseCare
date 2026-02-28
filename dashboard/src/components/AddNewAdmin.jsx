@@ -114,6 +114,7 @@ const AddNewAdmin = () => {
             />
             <input
               type="date"
+              placeholder="DOB"
               name="dob"
               value={formData.dob}
               onChange={handleChange}
