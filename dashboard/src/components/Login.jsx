@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Context } from "../main";
-import axios from "axios";
+import API from "../utils/api";
 import "./Login.css";
 
 const Login = () => {
@@ -15,13 +15,9 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/v1/user/login",
-        { email, password, role: "admin" },
-        {
-          withCredentials: true,
-          headers: { "Content-Type": "application/json" },
-        }
+      const res = await API.post(
+        "/api/v1/user/login",
+        { email, password, role: "admin" }
       );
 
       toast.success(res.data.message);

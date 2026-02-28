@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../main";
 import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import axios from "axios";
+import API from "../utils/api";
 import "./AddNewAdmin.css"
 
 const AddNewAdmin = () => {
@@ -29,14 +29,10 @@ const AddNewAdmin = () => {
     e.preventDefault();
 
     try {
-      const { data } = await axios.post(
-        "http://localhost:5000/api/v1/user/admin/addnew",
-        formData,
-        {
-          withCredentials: true,
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+     const { data } = await API.post(
+          "/api/v1/user/admin/addnew",
+          formData
+        );
 
       toast.success(data.message);
       navigateTo("/");

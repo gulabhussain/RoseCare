@@ -11,7 +11,7 @@ import AddNewDoctor from "./components/AddNewDoctor";
 import Messages from "./components/Messages";
 import Doctors from "./components/Doctors";
 import { Context } from "./main";
-import axios from "axios";
+import API from "./utils/api";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Sidebar from "./components/Sidebar";
@@ -22,22 +22,20 @@ const App = () => {
   const { isAuthenticated, setIsAuthenticated, setUser } =
     useContext(Context);
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:5000/api/v1/user/admin/me",
-          { withCredentials: true } // cookie ke liye
-        );
-        setIsAuthenticated(true);
-        setUser(response.data.user);
-      } catch (error) {
-        setIsAuthenticated(false);
-        setUser({});
-      }
-    };
-    fetchUser();
-  }, [isAuthenticated]); // sirf ek baar
+ useEffect(() => {
+  const fetchUser = async () => {
+    try {
+      const response = await API.get("/api/v1/user/admin/me");
+      setIsAuthenticated(true);
+      setUser(response.data.user);
+    } catch (error) {
+      setIsAuthenticated(false);
+      setUser({});
+    }
+  };
+
+  fetchUser();
+}, []);  // dependency empty
 
   return (
     <Router>
