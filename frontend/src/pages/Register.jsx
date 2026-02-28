@@ -134,6 +134,7 @@ const Register = () => {
           />
           <input
             type="date"
+            placeholder="DOB"
             value={dob}
             onChange={(e) => setDob(e.target.value)}
             required
